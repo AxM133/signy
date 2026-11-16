@@ -1,0 +1,126 @@
+@import '@fontsource/ibm-plex-sans/latin-400.css';
+@import '@fontsource/ibm-plex-sans/cyrillic-400.css';
+@import '@fontsource/ibm-plex-sans/latin-500.css';
+@import '@fontsource/ibm-plex-sans/cyrillic-500.css';
+@import '@fontsource/ibm-plex-sans/latin-600.css';
+@import '@fontsource/ibm-plex-sans/cyrillic-600.css';
+@import '@fontsource/ibm-plex-serif/latin-400.css';
+@import '@fontsource/ibm-plex-serif/cyrillic-400.css';
+@import '@fontsource/ibm-plex-serif/latin-500.css';
+@import '@fontsource/ibm-plex-serif/cyrillic-500.css';
+@import '@fontsource/ibm-plex-serif/latin-600.css';
+@import '@fontsource/ibm-plex-serif/cyrillic-600.css';
+@import '@fontsource/outfit/latin-600.css';
+@import '@fontsource/outfit/latin-700.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'IBM Plex Serif', ui-serif, Georgia, serif;
+  --font-logo: 'Outfit', 'IBM Plex Sans', sans-serif;
+
+  --color-brand: #1064e5;
+  --color-brand-dark: #0a4cb8;
+  --color-brand-soft: #5b95ed;
+  --color-ink: #1c283a;
+  --color-muted: #5d6b80;
+  --color-sky: #deeefc;
+  --color-sky-deep: #c6dffa;
+  --color-mint: #d8f1f0;
+  --color-night: #061224;
+  --color-slate-blue: #3d5a87;
+
+  --breakpoint-xs: 30rem;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+  --animate-drift: drift 40s linear infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-beam: beam 4s ease-in-out infinite;
+  --animate-fly: fly 2.4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.25; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(-120px); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes beam {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 0.85; }
+  }
+  @keyframes fly {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(6px, -8px) rotate(2deg); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 1296px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (min-width: 768px) { padding-inline: 2rem; }
+  @media (min-width: 1360px) { padding-inline: 0; max-width: 1232px; }
+}
+
+@utility nav-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@utility h-display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
